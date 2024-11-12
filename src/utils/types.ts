@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type TIngredient = {
   _id: string;
   name: string;
@@ -38,3 +40,15 @@ export type TUser = {
 };
 
 export type TTabMode = 'bun' | 'sauce' | 'main';
+
+export type TProtectedRouteProps = {
+  children: React.ReactElement;
+  IsUserAuthorized?: boolean;
+};
+
+export const enum RequestStatus {
+  Idle = 'Idle',
+  Loading = 'Loading',
+  Success = 'Success',
+  Failed = 'Failed'
+}
