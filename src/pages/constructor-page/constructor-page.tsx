@@ -1,15 +1,27 @@
-import { useSelector } from '../../services/store';
+import { useDispatch, useSelector } from '../../services/store';
+import { RootState } from '../../services/store';
 
 import styles from './constructor-page.module.css';
 
-import { BurgerIngredients } from '../../components';
-import { BurgerConstructor } from '../../components';
-import { Preloader } from '../../components/ui';
-import { FC } from 'react';
+import { BurgerIngredients } from '@components';
+import { BurgerConstructor } from '@components';
+import { Preloader } from '@ui';
+import { FC, useEffect } from 'react';
+import { getIngredients } from '../../services/slices/ingredientsSlice';
 
 export const ConstructorPage: FC = () => {
+  // хук useDispatch для отправки экшенов
+  const dispatch = useDispatch();
+
   /** TODO: взять переменную из стора */
-  const isIngredientsLoading = false;
+  const { isIngredientsLoading } = useSelector(
+    (state: RootState) => state.ingredients
+  );
+
+  // Вызов асинхроннного экшена для получения списка ингридиентов с сервера
+  useEffect(() => {
+    dispatch(getIngredients());
+  }, []);
 
   return (
     <>
