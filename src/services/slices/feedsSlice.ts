@@ -17,7 +17,7 @@ export const initialState: TFeedState = {
   status: RequestStatus.Idle
 };
 
-export const feetchFeeds = createAsyncThunk('feetchFeeds', async () =>
+export const getFeeds = createAsyncThunk('feetchFeeds', async () =>
   getFeedsApi()
 );
 
@@ -27,11 +27,11 @@ export const feedsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(feetchFeeds.pending, (state) => {
+      .addCase(getFeeds.pending, (state) => {
         state.status = RequestStatus.Loading;
       })
       .addCase(
-        feetchFeeds.fulfilled,
+        getFeeds.fulfilled,
         (state, action: PayloadAction<TOrdersData>) => {
           const { orders, total, totalToday } = action.payload;
           state.orders = orders;
@@ -40,7 +40,7 @@ export const feedsSlice = createSlice({
           state.status = RequestStatus.Success;
         }
       )
-      .addCase(feetchFeeds.rejected, (state) => {
+      .addCase(getFeeds.rejected, (state) => {
         state.status = RequestStatus.Failed;
       });
   },
