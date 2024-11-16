@@ -60,7 +60,7 @@ export const userLogOut = createAsyncThunk(
     logoutApi().then(() => {
       localStorage.clear();
       deleteCookie('accessToken');
-      dispatch(userLogOut());
+      dispatch(userLogOutCheck());
     });
   }
 );
