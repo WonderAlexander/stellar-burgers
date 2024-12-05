@@ -17,7 +17,6 @@ export const createOrder = createAsyncThunk(
   'order/createOrder',
   (orderData: string[]) => {
     const response = orderBurgerApi(orderData).then(({ order }) => order);
-    console.log(response);
     return response;
   }
 );

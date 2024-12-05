@@ -3,14 +3,14 @@ import { TIngredient } from '@utils-types';
 import { getIngredientsApi } from '@api';
 
 // Типизация стейта
-interface IIngredientsState {
+export interface IIngredientsState {
   ingredients: TIngredient[];
   isIngredientsLoading: boolean;
   error: string | null;
 }
 
 // Изначальный стейт
-const initialState: IIngredientsState = {
+export const initialState: IIngredientsState = {
   ingredients: [],
   isIngredientsLoading: false,
   error: null
@@ -35,9 +35,10 @@ export const ingredientsSlice = createSlice({
       })
       .addCase(getIngredients.rejected, (state, action) => {
         state.isIngredientsLoading = false;
-        if (action.error.message !== undefined) {
-          state.error = action.error.message;
-        }
+        // if (action.error.message !== undefined) {
+        //   state.error = action.error.message;
+        // }
+        state.error = null;
       })
       .addCase(getIngredients.fulfilled, (state, action) => {
         state.isIngredientsLoading = false;
