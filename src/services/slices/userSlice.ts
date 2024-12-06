@@ -12,13 +12,13 @@ import {
 } from '@api';
 import { setCookie, deleteCookie } from '../../utils/cookie';
 
-interface IUserState {
+export interface IUserState {
   isAuth: boolean;
   data: TUser | null;
   status: RequestStatus;
 }
 
-const initialState: IUserState = {
+export const initialState: IUserState = {
   isAuth: false,
   data: null,
   status: RequestStatus.Idle
