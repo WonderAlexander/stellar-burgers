@@ -12,7 +12,7 @@ interface IInitialState {
 }
 
 // Изначальный стейт
-export const initialState: IInitialState = {
+const initialState: IInitialState = {
   constructorItems: {
     bun: null,
     ingredients: []
